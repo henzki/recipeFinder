@@ -14,6 +14,19 @@ export default function App() {
     });    
   }
 
+  const listSeparator = () => {
+    return (
+      <View
+        style={{
+          height: 0.5,
+          width: "95%",
+          backgroundColor: "#CED0CE",
+          marginTop: 5,
+        }}
+      />
+    );
+  };
+
   return (
     <View style={styles.container}>
       <StatusBar hidden={true} />
@@ -26,9 +39,10 @@ export default function App() {
             <Image style={{ width: 100, height: 100 }} source={{ uri: `${item.strMealThumb}`, }} />
           </View>}
         data={repositories} 
+        ItemSeparatorComponent={listSeparator}
      /> 
-     <View style={styles.input} style={{flex: 0.2, marginLeft : "1%"}}>
-      <TextInput style={{ fontSize: 20, width: 350}} textAlign={'center'} placeholder='keyword' 
+     <View style={styles.input} style={{flex: 0.15, marginLeft : "1%"}}>
+      <TextInput style={{ fontSize: 20}} textAlign={'center'} placeholder='Place an ingredient' 
         onChangeText={text => setKeyword(text)} />
       <Button title="Find" onPress={getRepositories} />
       </View>
@@ -42,10 +56,13 @@ const styles = StyleSheet.create({
    flex: 1,
    backgroundColor: '#fff',
    justifyContent: 'center',
+   marginTop: 25,
+   marginBottom: 20
   },
   input: {
+    marginBottom: 10,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  }
+  },
  });
